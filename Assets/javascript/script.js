@@ -130,7 +130,7 @@ window.onscroll = () => {
 // Type writer Animation
 let typeText = document.querySelector('.type-writer-text');
 
-let skills = ['Web Developer', 'Frontend Engineer', 'Web Designer', 'Entrepreneur'];
+let skills = ['MERN-Stack Developer', 'Frontend Engineer', 'Web Designer', 'Entrepreneur'];
 let textArrayIndex = 0;
 let charIndex = 0;
 
