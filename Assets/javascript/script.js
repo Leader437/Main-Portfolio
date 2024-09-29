@@ -168,6 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+
 skillBtn.addEventListener('click', () => {
     // make button highlight
     skillButtonBefore.style.transform = "translateX(0)";

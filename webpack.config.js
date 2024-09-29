@@ -17,7 +17,7 @@ module.exports = {
                 use: ['html-loader']      // Create an empty file of html put Css, Js tags for us, Requires a template file that includes the inner content of the file
             },
             {
-                test: /\.(svg|png|jpg|gif)$/,
+                test: /\.(svg|png|jpg|gif|pdf)$/,
                 type: "asset/resource"
             }
         ],
