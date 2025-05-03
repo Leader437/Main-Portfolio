@@ -58,6 +58,23 @@ body.dark_theme {
   }
 }
 
+/* [text-split] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.gsap-ready [text-split] {
+  opacity: 1;
+  visibility: visible;
+} */
+
+.word {
+	overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+  transform-origin: bottom;
+}
+
 /*=========================
                                                             ===Scrollbar & Selection===
                                                             =========================*/
@@ -158,6 +175,7 @@ main {
   font-size: var(--fs-3);
   font-family: var(--f-dm);
   font-weight: 900;
+  line-height: 1em;
 }
 
 .sec-title {

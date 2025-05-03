@@ -230,6 +230,8 @@ loadBtn.addEventListener('click', (e) => {
 
 
 import gsap from "gsap";
+import $ from 'jquery';
+import SplitType from "split-type";
 import ScrollTrigger from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
@@ -237,75 +239,74 @@ gsap.registerPlugin(ScrollTrigger);
 const tl1 = gsap.timeline();
 
 tl1
-    /*
-    .to('#web-starter > h1', {
-        display:'block',
-        duration:0.1
-    })
-    .from("#num-1", {
-        opacity: 0,
-        duration: 0.3,
-        onStart: function () {
-            $('#num-1').textillate({
-                in: {
-                    effect: 'fadeInUp',
-                    callback: function () {
-                        $('#num-1').textillate('out')
-                    }
-                },
-                out: { effect: 'fadeOutUp' }
-            });
-        }
-    })
-    .from("#num-2", {
-        opacity: 0,
-        delay: 1,
-        duration: 0.3,
-        onStart: function () {
-            $('#num-2').textillate({
-                in: {
-                    effect: 'fadeInUp',
-                    callback: function () {
-                        $('#num-2').textillate('out')
-                    }
-                },
-                out: { effect: 'fadeOutUp' }
-            });
-        }
-    })
-    .from("#num-3", {
-        opacity: 0,
-        delay: 1,
-        duration: 0.3,
-        onStart: function () {
-            $('#num-3').textillate({
-                in: {
-                    effect: 'fadeInUp',
-                    callback: function () {
-                        $('#num-3').textillate('out')
-                    }
-                },
-                out: { effect: 'fadeOutUp' }
-            });
-        }
-    })
-    .from("#num-4", {
-        opacity: 0,
-        delay: 1,
-        duration: 0.3,
-        onStart: function () {
-            $('#num-4').textillate({
-                in: { effect: 'fadeInUp' }
-            });
-        }
-    })
-    .to('#web-starter', {
-        delay: 1,
-        duration: 1.2,
-        bottom: '100%',
-        ease: 'Power4.easeOut'
-    })
-    */
+    // .to('#web-starter > h1', {
+    //     display: 'block',
+    //     duration: 0.1
+    // })
+    // .from("#num-1", {
+    //     opacity: 0,
+    //     duration: 0.3,
+    //     onStart: function () {
+    //         $('#num-1').textillate({
+    //             in: {
+    //                 effect: 'fadeInUp',
+    //                 callback: function () {
+    //                     $('#num-1').textillate('out')
+    //                 }
+    //             },
+    //             out: { effect: 'fadeOutUp' }
+    //         });
+    //     }
+    // })
+    // .from("#num-2", {
+    //     opacity: 0,
+    //     delay: 1,
+    //     duration: 0.3,
+    //     onStart: function () {
+    //         $('#num-2').textillate({
+    //             in: {
+    //                 effect: 'fadeInUp',
+    //                 callback: function () {
+    //                     $('#num-2').textillate('out')
+    //                 }
+    //             },
+    //             out: { effect: 'fadeOutUp' }
+    //         });
+    //     }
+    // })
+    // .from("#num-3", {
+    //     opacity: 0,
+    //     delay: 1,
+    //     duration: 0.3,
+    //     onStart: function () {
+    //         $('#num-3').textillate({
+    //             in: {
+    //                 effect: 'fadeInUp',
+    //                 callback: function () {
+    //                     $('#num-3').textillate('out')
+    //                 }
+    //             },
+    //             out: { effect: 'fadeOutUp' }
+    //         });
+    //     }
+    // })
+    // .from("#num-4", {
+    //     opacity: 0,
+    //     delay: 1,
+    //     duration: 0.3,
+    //     onStart: function () {
+    //         $('#num-4').textillate({
+    //             in: { effect: 'fadeInUp' }
+    //         });
+    //     }
+    // })
+    // .to('#web-starter', {
+    //     delay: 1,
+    //     duration: 1.2,
+    //     bottom: '100%',
+    //     ease: 'Power4.easeOut'
+    // })
+
     .to('main', {
         height: '100%'
     })
@@ -360,22 +361,9 @@ tl3
         duration: 2,
         ease: 'Power4.easeOut'
     })
-    .from('.about-heading', {
-        delay: '-2',
-        opacity: 0,
-        onStart: function () {
-            $('.about-heading').textillate({
-                loop: false,
-                in: {
-                    effect: 'fadeInUp',
-                    duration: 100,
-                }
-            });
-        }
-    })
     .from('.about-para', {
-        delay: '-1',
-        duration: 1.5,
+        delay: '-1.5',
+        duration: 1,
         opacity: 0,
         y: 30,
         ease: 'Power4.easeOut'
@@ -392,15 +380,6 @@ let tl4 = gsap.timeline();
 tl4
     .from('.skill-heading', {
         opacity: 0,
-        onStart: function () {
-            $('.skill-heading').textillate({
-                loop: false,
-                in: {
-                    effect: 'fadeInUp',
-                    duration: 100
-                }
-            });
-        }
     })
     .from('.skills-para', {
         duration: 1,
@@ -422,9 +401,6 @@ ScrollTrigger.create({
     animation: tl4,
 })
 
-
-
-
 let tl5 = gsap.timeline();
 
 tl5
@@ -434,21 +410,8 @@ tl5
         duration: 2,
         ease: 'Power4.easeOut'
     })
-    .from('.work-heading', {
-        delay: '-2',
-        opacity: 0,
-        onStart: function () {
-            $('.work-heading').textillate({
-                loop: false,
-                in: {
-                    effect: 'fadeInUp',
-                    duration: 100
-                }
-            });
-        }
-    })
     .from(['.work-para2', '.work-para1'], {
-        delay: '-1',
+        delay: '-1.5',
         duration: 1,
         opacity: 0,
         y: 20,
@@ -461,39 +424,25 @@ ScrollTrigger.create({
     animation: tl5,
 })
 
-
-
 let tl6 = gsap.timeline();
 
 tl6
     .from('.contact-right', {
-        opacity:0,
-        duration:3,
-        y:30,
-        ease:'Power4.easeOut'
-    })
-    .from('.contact-top .contact-heading', {
-        delay: '-2',
         opacity: 0,
-        onStart: function () {
-            $('.contact-heading').textillate({
-                loop: false,
-                in: {
-                    effect: 'fadeInUp',
-                    duration: 100
-                }
-            });
-        }
+        duration: 1,
+        y: 30,
+        ease: 'Power4.easeOut'
     })
-    .from('.contact-name',{
-        delay: '-1',
-        duration: 1.5,
+    .from('.contact-name', {
+        delay: '-1.7',
+        duration: 0.5,
         opacity: 0,
         y: 30,
         ease: 'Power4.easeOut'
     })
-    .from(['.contact-detail', '.contact-para'],{
-        duration: 1,
+    .from(['.contact-detail', '.contact-para'], {
+        delay: '-0.5',
+        duration: 0.5,
         opacity: 0,
         y: 30,
         ease: 'Power4.easeOut'
@@ -504,3 +453,45 @@ ScrollTrigger.create({
     start: 'top 70%',
     animation: tl6,
 })
+
+
+
+
+
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+
+
+window.addEventListener("DOMContentLoaded", (event) => {
+    // Split text into spans
+    let typeSplit = new SplitType("[text-split]", {
+        types: "words, chars",
+        tagName: "span"
+    });
+
+    // Link timelines to scroll position
+    function createScrollTrigger(triggerElement, timeline) {
+        // Reset tl when scroll out of view past bottom of screen
+        ScrollTrigger.create({
+            trigger: triggerElement,
+            start: "top bottom",
+            onLeaveBack: () => {
+                timeline.progress(0);
+                timeline.pause();
+            }
+        });
+        // Play tl when scrolled into view (60% from top of screen)
+        ScrollTrigger.create({
+            trigger: triggerElement,
+            start: "top 60%",
+            onEnter: () => timeline.play()
+        });
+    }
+
+    $("[letters-slide-up]").each(function (index) {
+        let tl = gsap.timeline({ paused: true });
+        tl.from($(this).find(".char"), { yPercent: 100, duration: 0.2, ease: "power1.out", stagger: { amount: 0.6 } });
+        createScrollTrigger($(this), tl);
+    });
+});
