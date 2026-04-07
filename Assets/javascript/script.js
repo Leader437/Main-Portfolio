@@ -230,9 +230,25 @@ loadBtn.addEventListener('click', (e) => {
 
 
 import gsap from "gsap";
+import Lenis from "lenis";
 import SplitType from "split-type";
 import ScrollTrigger from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
+
+const lenis = new Lenis({
+    duration: 1.05,
+    easing: (t) => 1 - Math.pow(1 - t, 4),
+    smoothWheel: true,
+    smoothTouch: false,
+    anchors: true,
+});
+
+lenis.on("scroll", ScrollTrigger.update);
+gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+});
+gsap.ticker.lagSmoothing(0);
+window.addEventListener("resize", () => lenis.resize());
 
 // Use the global jQuery instance from template.html so Textillate/Lettering plugins are available.
 const $ = window.jQuery || window.$;
