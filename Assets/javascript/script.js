@@ -130,7 +130,7 @@ window.onscroll = () => {
 // Type writer Animation
 let typeText = document.querySelector('.type-writer-text');
 
-let skills = ['MERN-Stack Developer', 'Frontend Engineer', 'Web Designer', 'Entrepreneur'];
+let skills = ['MERN-Stack Developer', 'Frontend Engineer', 'Web Designer'];
 let textArrayIndex = 0;
 let charIndex = 0;
 
@@ -230,82 +230,89 @@ loadBtn.addEventListener('click', (e) => {
 
 
 import gsap from "gsap";
-import $ from 'jquery';
 import SplitType from "split-type";
 import ScrollTrigger from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
+
+// Use the global jQuery instance from template.html so Textillate/Lettering plugins are available.
+const $ = window.jQuery || window.$;
+const hasTextillate = Boolean($ && $.fn && typeof $.fn.textillate === 'function');
 
 
 const tl1 = gsap.timeline();
 
 tl1
-    // .to('#web-starter > h1', {
-    //     display: 'block',
-    //     duration: 0.1
-    // })
-    // .from("#num-1", {
-    //     opacity: 0,
-    //     duration: 0.3,
-    //     onStart: function () {
-    //         $('#num-1').textillate({
-    //             in: {
-    //                 effect: 'fadeInUp',
-    //                 callback: function () {
-    //                     $('#num-1').textillate('out')
-    //                 }
-    //             },
-    //             out: { effect: 'fadeOutUp' }
-    //         });
-    //     }
-    // })
-    // .from("#num-2", {
-    //     opacity: 0,
-    //     delay: 1,
-    //     duration: 0.3,
-    //     onStart: function () {
-    //         $('#num-2').textillate({
-    //             in: {
-    //                 effect: 'fadeInUp',
-    //                 callback: function () {
-    //                     $('#num-2').textillate('out')
-    //                 }
-    //             },
-    //             out: { effect: 'fadeOutUp' }
-    //         });
-    //     }
-    // })
-    // .from("#num-3", {
-    //     opacity: 0,
-    //     delay: 1,
-    //     duration: 0.3,
-    //     onStart: function () {
-    //         $('#num-3').textillate({
-    //             in: {
-    //                 effect: 'fadeInUp',
-    //                 callback: function () {
-    //                     $('#num-3').textillate('out')
-    //                 }
-    //             },
-    //             out: { effect: 'fadeOutUp' }
-    //         });
-    //     }
-    // })
-    // .from("#num-4", {
-    //     opacity: 0,
-    //     delay: 1,
-    //     duration: 0.3,
-    //     onStart: function () {
-    //         $('#num-4').textillate({
-    //             in: { effect: 'fadeInUp' }
-    //         });
-    //     }
-    // })
-    // .to('#web-starter', {
-    //     delay: 1,
-    //     duration: 1.2,
-    //     bottom: '100%',
-    //     ease: 'Power4.easeOut'
-    // })
+    .to('#web-starter > h1', {
+        display: 'block',
+        duration: 0.1
+    })
+    .from("#num-1", {
+        opacity: 0,
+        duration: 0.3,
+        onStart: function () {
+            if (!hasTextillate) return;
+            $('#num-1').textillate({
+                in: {
+                    effect: 'fadeInUp',
+                    callback: function () {
+                        $('#num-1').textillate('out')
+                    }
+                },
+                out: { effect: 'fadeOutUp' }
+            });
+        }
+    })
+    .from("#num-2", {
+        opacity: 0,
+        delay: 1,
+        duration: 0.3,
+        onStart: function () {
+            if (!hasTextillate) return;
+            $('#num-2').textillate({
+                in: {
+                    effect: 'fadeInUp',
+                    callback: function () {
+                        $('#num-2').textillate('out')
+                    }
+                },
+                out: { effect: 'fadeOutUp' }
+            });
+        }
+    })
+    .from("#num-3", {
+        opacity: 0,
+        delay: 1,
+        duration: 0.3,
+        onStart: function () {
+            if (!hasTextillate) return;
+            $('#num-3').textillate({
+                in: {
+                    effect: 'fadeInUp',
+                    callback: function () {
+                        $('#num-3').textillate('out')
+                    }
+                },
+                out: { effect: 'fadeOutUp' }
+            });
+        }
+    })
+    .from("#num-4", {
+        opacity: 0,
+        delay: 1,
+        duration: 0.3,
+        onStart: function () {
+            if (!hasTextillate) return;
+            $('#num-4').textillate({
+                in: { effect: 'fadeInUp' }
+            });
+        }
+    })
+    .to('#web-starter', {
+        delay: 1,
+        duration: 1.2,
+        bottom: '100%',
+        ease: 'Power4.easeOut'
+    })
 
     .to('main', {
         height: '100%'
@@ -489,9 +496,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
         });
     }
 
-    $("[letters-slide-up]").each(function (index) {
-        let tl = gsap.timeline({ paused: true });
-        tl.from($(this).find(".char"), { yPercent: 100, duration: 0.2, ease: "power1.out", stagger: { amount: 0.6 } });
-        createScrollTrigger($(this), tl);
-    });
+    if ($) {
+        $("[letters-slide-up]").each(function () {
+            let tl = gsap.timeline({ paused: true });
+            tl.from($(this).find(".char"), { yPercent: 100, duration: 0.2, ease: "power1.out", stagger: { amount: 0.6 } });
+            createScrollTrigger($(this), tl);
+        });
+    }
 });
